@@ -77,24 +77,32 @@
         </ol>
       </nav>
       <div class="container">
-        <div class="card card-body bg-gray">
-          <h2>Часть I</h2>
-          <a href="https://kodaktor.ru/x/_dtd/473bb">XML</a>
-          <a href="https://kodaktor.ru/j/_dtd/69627">DTD</a>
-        </div>
-        <div class="card card-body bg-gray">
-          <h2>Часть II</h2>
-          <a href="https://kodaktor.ru/x/_dtd/1a90d">XML</a>
-          <a href="https://kodaktor.ru/j/_dtd/3f384">DTD</a>
-        </div>
-        <div class="card card-body bg-gray">
-          <h2>Часть III</h2>
-          <a href="https://kodaktor.ru/x/_dtd/afa42">XML</a>
-          <a href="https://kodaktor.ru/j/_dtd/bc46f">DTD</a>
-        </div>
-      </div>
+        <h1>Fetch exercise (Вывод в console.log)</h1>
+    <button onclick="btclick()">Поехали</button>
     </main>
   </body>
+  <script>
+    async function btclick(){
+      let values = [10, 20, 30];
+      let urls = [
+        "https://kodaktor.ru/api/m/",
+        "https://kodaktor.ru/api/MS2/",
+        "https://kodaktor.ru/api/MS3/",
+      ];
+      const headers = { "Content-Type": "application/json" };
+      let part;
+      let res = [];
+      let output = {};
+      for (let i = 0; i < values.length; i++) {
+        res[i - 1] ? (part = "/" + res[i - 1]) : (part = "");
+        output = await fetch(urls[i] + values[i] + part, { headers }).then((x) =>
+          x.json()
+        );
+        res.push(output.result);
+      }
+      console.log(res);
+    }
+  </script>
   <script
     src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
