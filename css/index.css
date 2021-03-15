@@ -24,11 +24,6 @@ body{
 .footer-text{
   text-align: center;
 }
-.go{
-  margin: 0;
-  position: relative;
-  margin-left: 50%;
-}
 
 .bg-gray {
   background-color: #f3f6fa;
